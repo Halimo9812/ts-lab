@@ -185,6 +185,61 @@ var myBuick = new Car("Buick", "Regal");
 myBuick.wheels = myBuick.wheels - 1;
 console.log(myBuick.wheels);
 console.log(myBuick.model);
+//part 3//  Create a generic class/// NCycle
+// --- NCycle Class
+var NCycle = /** @class */function () {
+  function NCycle(make, model, wheels) {
+    this.status = "stopped";
+    this.make = make;
+    this.model = model;
+    this.wheels = wheels;
+  }
+  NCycle.prototype.start = function () {
+    this.status = "started";
+  };
+  NCycle.prototype.stop = function () {
+    this.status = "stopped";
+  };
+  NCycle.prototype.print = function (index) {
+    if (index === void 0) {
+      index = 0;
+    }
+    // if this.make and this.model are both arrays
+    if (Array.isArray(this.make) && Array.isArray(this.model)) {
+      // if parameter index exist in this,ake and this.model
+      if (this.make[index] && this.model[index]) {
+        console.log("This NCycle has a " + this.make[index] + " " + this.model[index] + " at " + index);
+      }
+    } else {
+      console.log("This is a " + this.make + " " + this.model + " NCycle");
+      // if (typeof this.make === 'string' && typeof this.model === 'string') {
+      //   console.log(`This is a ${this.make} ${this.model} NCycle`);
+      // } else {
+      //   console.log(`This is a ${this.make} ${this.model} are not strings!`);
+      // }
+    }
+  };
+  NCycle.prototype.printAll = function () {
+    if (Array.isArray(this.make) && Array.isArray(this.model)) {
+      // if parameter index exist in this,ake and this.model
+      for (var i = 0; i < Math.min(this.make.length, this.model.length); i++) {
+        console.log("This NCycle has a " + this.make[i] + " " + this.model[i]);
+      }
+    }
+  };
+  return NCycle;
+}();
+// const testCycle1 = new NCycle<number>(1, 2, 3);
+// testCycle1.print();
+// const testCycle2 = new NCycle<string>("Ford", "F150", 4);
+// testCycle2.print();
+// const testCycle3 = new NCycle<string>("Tesla", "Mode Y", 4);
+// testCycle3.print(4);
+var makes4 = ["Volkswagon", "Tesla", "Audi"];
+var models4 = ["Passat", "Model X", "A4"];
+var testCycle4 = new NCycle(makes4, models4, 4);
+testCycle4.print(2);
+testCycle4.printAll();
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -210,7 +265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54721" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51437" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
